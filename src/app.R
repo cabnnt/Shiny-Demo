@@ -1,11 +1,11 @@
 library(shiny)
 library(plyr)
+library(ggplot2)
 library(data.table)
 
 # Simple Shiny app to render a scatter plot of unemployment data from 1967-2015.
 
-data("economics")
-dataset <- economics
+dataset <- data("economics")
 
 # Server component of Shiny application
 server <- function(input, output) {
