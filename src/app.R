@@ -7,10 +7,10 @@ library(data.table)
 data("economics")
 dataset <- economics
 
-# server component of shiny application
+# Server component of Shiny application
 server <- function(input, output) {
-  output$text1 <- renderText({
-    paste("You have selected dates from", min(input$dateRange), "to", max(input$dateRange))
+  output$rangeText <- renderText({
+    paste("You have selected dates from", min(input$dateRange), "to", max(input$dateRange), ":")
   })
   output$displayHistogram <- renderPlot({
     display <- subset(economics, economics$date >= input$dateRange[1] & economics$date <= input$dateRange[2])
@@ -19,7 +19,7 @@ server <- function(input, output) {
   })
 }
 
-# ui component of shiny application
+# UI component of Shiny application
 ui <- shinyUI(fluidPage(
   
   titlePanel("U.S. Unemployment Data from 1967-2015"),
@@ -34,7 +34,7 @@ ui <- shinyUI(fluidPage(
     ),
     
     mainPanel(
-      textOutput("text1"),
+      textOutput("rangeText"),
       plotOutput("displayHistogram")
     )
   )
