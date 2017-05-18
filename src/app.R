@@ -10,7 +10,7 @@ dataset <- economics
 # Server component of Shiny application
 server <- function(input, output) {
   output$rangeText <- renderText({
-    paste("You have selected dates from", min(input$dateRange), "to", max(input$dateRange), ":")
+    paste("You have selected dates from", min(input$dateRange), "to", max(input$dateRange))
   })
   output$displayHistogram <- renderPlot({
     display <- subset(economics, economics$date >= input$dateRange[1] & economics$date <= input$dateRange[2])
